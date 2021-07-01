@@ -1,0 +1,6 @@
+export const CREATE_TODO = "CREATE_TODO";
+export const DELETE_TODO = "DELETE_TODO";
+export const EDIT_TODO = "EDIT_TODO";
+export const CHANGE_STATUS = "CHANGE_STATUS";
+export const ADD_FAVORITES = "ADD_FAVORITES";
+export const REMOVE_FAVORITES = "REMOVE_FAVORITES";
