@@ -8,8 +8,7 @@ import './App.css'
 function App() {
   return (
     <div className="App">
-      <Route exact path='/home' component={ToDoList}/>
-
+      <Route exact path='/' component={ToDoList}/>
     </div>
   );
 }

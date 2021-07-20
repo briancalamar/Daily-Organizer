@@ -1,6 +1,7 @@
 .todos {
+    box-sizing: border-box;
     width: 65vw;
-    height: 80vh;
+    height: 82vh;
     border-radius: 15px;
     border: solid 8px #7C2AE8;
     box-shadow: 0px 10px 25px black;

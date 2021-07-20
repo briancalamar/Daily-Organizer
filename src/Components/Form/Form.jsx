@@ -2,6 +2,9 @@ import { useState } from 'react'
 import { connect } from 'react-redux'
 import { createTodo } from '../../Actions'
 
+import { IoMdClock, IoMdSend } from 'react-icons/io'
+import { BiMessageDetail } from 'react-icons/bi'
+
 import './Form.css'
 // import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
@@ -37,61 +40,97 @@ function Form({ createTodo }) {
 
     return (
         <div className="form">
+            <h2> INGRESA TU TAREA </h2>
             <form
                 className="formInDiv"
                 type="submit"
                 onSubmit={handleSubmit}>
-                <input
-                    name="title"
-                    type="text"
-                    value={form.title}
-                    onChange={handleChange} />
-                {
-                    time === false 
-                    ? <input
-                        type="button"
-                        value="Set Time"
-                        onClick={() => setTime(!time)} />
-                    : <div>
-                        <input
-                            type="time"
-                            name="time"
-                            value={form.time}
-                            onChange={handleChange}
-                        />
-                        <input
-                            type="button"
-                            value="-"
-                            onClick={() => setTime(!time)} />
-                    </div> 
-                    
-                }
-                {
-                    detail === false
-                        ? <input
-                            type="button"
-                            value="ADD Details"
-                            onClick={() => setDetail(!detail)} />
-                        : <div>
-                            <input
-                                name="detail"
-                                type="text"
-                                value={form.detail}
-                                onChange={handleChange} />
-                            <input
-                            type="button"
-                            value="-"
-                            onClick={() => setDetail(!detail)} />
-                        </div>
-                }
+                <div className="title separator">
+                    <h3> Titulo</h3>
+                    <input
+                        className="input-title"
+                        name="title"
+                        type="text"
+                        placeholder="Ingrese un titulo..."
+                        value={form.title}
+                        onChange={handleChange} />
+                </div>
+                <div className="time separator">
+                    <h3>Horario</h3>
+                    {
+                        time === false
+                            ?
+                            <button
+                                type="button"
+                                onClick={() => setTime(!time)}
+                                className="btn-clock btn"
+                            >
+                                <IoMdClock />
+                            </button>
+                            // <input
+                            //     type="button"
+                            //     value="Horario"
+                            //     onClick={() => setTime(!time)} />
+                            : <div>
+                                <input
+                                    type="time"
+                                    name="time"
+                                    className="input-time"
+                                    value={form.time}
+                                    onChange={handleChange}
+                                />
+                                <input
+                                    className="btn-minus-time"
+                                    type="button"
+                                    value="-"
+                                    onClick={() => setTime(!time)} />
+                            </div>
+
+                    }
+                </div>
+                <div className="detail separator">
+                    <h3>Detalles</h3>
+                    {
+                        detail === false
+                            ? <button
+                                type="button"
+                                value="ADD Details"
+                                onClick={() => setDetail(!detail)}
+                                className="btn-detail btn"
+                            >
+                                <BiMessageDetail />
+                            </button>
+                            // <input
+                            //     type="button"
+                            //     value="ADD Details"
+                            //     onClick={() => setDetail(!detail)} />
+                            : <div>
+                                <input
+                                    className="input-detail"
+                                    name="detail"
+                                    type="text"
+                                    value={form.detail}
+                                    onChange={handleChange} />
+                                <input
+                                    className="btn-minus-detail"
+                                    type="button"
+                                    value="-"
+                                    onClick={() => setDetail(!detail)} />
+                            </div>
+                    }
+                </div>
                 {/* {
                     form.favorite === false
-                        ? <AiOutlineStar
-                            onClick={() => setForm({ ...form, favorite: !form.favorite })} />
-                        : <AiFillStar
-                            onClick={() => setForm({ ...form, favorite: !form.favorite })} />
+                    ? <AiOutlineStar
+                    onClick={() => setForm({ ...form, favorite: !form.favorite })} />
+                    : <AiFillStar
+                    onClick={() => setForm({ ...form, favorite: !form.favorite })} />
                 } */}
-                <button>Enviar</button>
+                <button
+                    className="submit"
+                >
+                Enviar  <IoMdSend/>
+                </button>
             </form>
         </div>
     )
