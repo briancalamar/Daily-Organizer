@@ -1,19 +1,22 @@
 import { connect } from 'react-redux'
-import Todo from './Todo'
+import Todo from './Todo/Todo'
+
+import './Todos.css'
 
 function Todos({ todos }) {
+
     return (
-        <div>
+        <div className="todos">
             {
                 Object.keys(todos).length !== 0
                 &&
                 Object.keys(todos).map((hour, i) =>
-                <div key={i}>
-                    <h1>{hour}</h1>
-                    {
-                        todos[hour].map((e, i) => <Todo key={i} todo={e} />)
-                    }
-                </div>)
+                    <div key={i}>
+                        <h1>{hour}</h1>
+                        {
+                            todos[hour].map((e, i) => <Todo key={i} todo={e} />)
+                        }
+                    </div>)
             }
         </div>
     )

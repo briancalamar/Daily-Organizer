@@ -1,4 +1,4 @@
-import { addFavorites, deleteTodo, removeFavorites } from '../Actions';
+import { addFavorites, deleteTodo, removeFavorites } from '../../../Actions';
 import { connect } from "react-redux";
 import { AiOutlineStar, AiFillStar, AiFillDelete } from 'react-icons/ai';
 import { Link } from 'react-router-dom'
@@ -15,7 +15,7 @@ function Todo({ todo, addFavorites, removeFavorites, deleteTodo }) {
     }
 
     return (
-        <div>
+        <div className="">
             <h2>{todo.title}</h2>
             <div>
                 <AiFillDelete onClick={() => deleteTodo({time:todo.time, id:todo.id})}/>

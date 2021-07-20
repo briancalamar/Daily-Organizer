@@ -1,13 +1,15 @@
 import { Route } from "react-router";
-import Form from "./Components/Form";
-import Todos from "./Components/Todos";
+import ToDoList from "./Components/ToDoList/ToDoList";
+import './App.css'
+
+
 
 
 function App() {
   return (
     <div className="App">
-      <Route exact path='/home' component={Form}/>
-      <Route exact path='/home' component={Todos}/>
+      <Route exact path='/home' component={ToDoList}/>
+
     </div>
   );
 }

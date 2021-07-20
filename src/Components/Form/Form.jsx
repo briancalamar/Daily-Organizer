@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
-import { createTodo } from '../Actions'
+import { createTodo } from '../../Actions'
+
+import './Form.css'
 // import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
 
 function Form({ createTodo }) {
@@ -14,7 +16,8 @@ function Form({ createTodo }) {
     })
 
     function handleChange(e) {
-        console.log(e.target.name, e.target.value)
+        // console.log(e.target.name, e.target.value)
+        console.log(e.target)
         e.preventDefault()
         setForm({
             ...form,
@@ -33,8 +36,9 @@ function Form({ createTodo }) {
     }
 
     return (
-        <div>
+        <div className="form">
             <form
+                className="formInDiv"
                 type="submit"
                 onSubmit={handleSubmit}>
                 <input
