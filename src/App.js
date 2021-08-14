@@ -1,6 +1,7 @@
 import { Route } from "react-router";
 import ToDoList from "./Components/ToDoList/ToDoList";
 import './App.css'
+import NavBar from "./Components/NavBar/NavBar";
 
 
 
@@ -8,7 +9,8 @@ import './App.css'
 function App() {
   return (
     <div className="App">
-      <Route exact path='/' component={ToDoList}/>
+      <Route  path='/' component={NavBar}/>
+      <Route  path='/tareas' component={ToDoList}/>
     </div>
   );
 }

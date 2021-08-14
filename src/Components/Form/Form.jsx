@@ -4,6 +4,8 @@ import { createTodo } from '../../Actions'
 
 import { IoMdClock, IoMdSend } from 'react-icons/io'
 import { BiMessageDetail } from 'react-icons/bi'
+import { RiArrowGoBackLine } from 'react-icons/ri'
+
 
 import './Form.css'
 // import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
@@ -67,11 +69,7 @@ function Form({ createTodo }) {
                             >
                                 <IoMdClock />
                             </button>
-                            // <input
-                            //     type="button"
-                            //     value="Horario"
-                            //     onClick={() => setTime(!time)} />
-                            : <div>
+                            : <div className="task-form-time">
                                 <input
                                     type="time"
                                     name="time"
@@ -79,11 +77,15 @@ function Form({ createTodo }) {
                                     value={form.time}
                                     onChange={handleChange}
                                 />
-                                <input
+                                <RiArrowGoBackLine
+                                    className="btn-minus btn-minus-time"
+                                    onClick={() => setTime(!time)}
+                                />
+                                {/* <input
                                     className="btn-minus-time"
                                     type="button"
                                     value="-"
-                                    onClick={() => setTime(!time)} />
+                                    onClick={() => setTime(!time)} /> */}
                             </div>
 
                     }
@@ -100,22 +102,17 @@ function Form({ createTodo }) {
                             >
                                 <BiMessageDetail />
                             </button>
-                            // <input
-                            //     type="button"
-                            //     value="ADD Details"
-                            //     onClick={() => setDetail(!detail)} />
-                            : <div>
-                                <input
+                            : <div className="task-form-detail">
+                                <textarea
                                     className="input-detail"
                                     name="detail"
-                                    type="text"
+                                    // placeholder="Ingrese los detalles aqui"
                                     value={form.detail}
                                     onChange={handleChange} />
-                                <input
-                                    className="btn-minus-detail"
-                                    type="button"
-                                    value="-"
-                                    onClick={() => setDetail(!detail)} />
+                                {/* <RiArrowGoBackLine
+                                    className="btn-minus btn-minus-detail"
+                                    onClick={() => setDetail(!detail)}
+                                /> */}
                             </div>
                     }
                 </div>
@@ -129,7 +126,7 @@ function Form({ createTodo }) {
                 <button
                     className="submit"
                 >
-                Enviar  <IoMdSend/>
+                    Enviar  <IoMdSend />
                 </button>
             </form>
         </div>

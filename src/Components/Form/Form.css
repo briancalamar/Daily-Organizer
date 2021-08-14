@@ -1,6 +1,6 @@
 .form {
     box-sizing: border-box;
-    height: 82vh;
+    min-height: 82vh;
     width: 21vw;
     border-radius: 15px;
     border: solid 8px #7C2AE8;
@@ -12,9 +12,12 @@
     align-items: center;
 }
 
+.form h2 {
+    font-size: 1.4em;
+}
+
 .formInDiv {
     width: 90%;
-    height: 90%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -22,6 +25,7 @@
 
 .separator {
     width: 100%;
+    margin: 20px 0;
 }
 .input-title {
     width: 60%;
@@ -30,6 +34,7 @@
     height: 40px;
     text-align: center;
     transition: 0.7s;
+    outline: none;
 }
 .input-title:hover {
     width: 100%;
@@ -50,6 +55,70 @@
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.74);
 }
 
+.task-form-time {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.task-form-detail {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    position: relative;
+}
+
+.input-time {
+    width: 40%;
+    margin-left: 50px;
+    font-size: 1.5em;
+    border: none;
+    border-bottom: solid 5px #7c2ae8b0;
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+    padding-left: 20px;
+    transition: 0.7s;
+    cursor: pointer;
+}
+.input-time:hover {
+    width: 60%;
+}
+
+.btn-minus {
+    right: 10px;
+    margin-left: 20px;
+    border-bottom: solid 5px #ff0000b0;
+    font-size: 1.5em;
+    color: #ff0000b0;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.btn-minus:hover {
+    width: 1.5em;
+}
+
+
+.input-detail {
+    width: 90%;
+    max-width: 100%;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    outline: none;
+    transition: 0.7s;
+    cursor: pointer;
+}
+
+
+.btn-minus-detail {
+    position: absolute;
+    right: 0px;
+    bottom: 15px;
+}
 .submit {
     margin-top: 40px;
     width: 100%;
@@ -65,8 +134,32 @@
     align-content: center;
     justify-content: center;
     align-items: center;
+    margin-bottom: 15px;
 }
 .submit:hover {
     box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.74);
 }
 
+@media (max-width: 1000px) {
+    .form {
+        width: 95vw;
+        max-width: 450px;
+    }
+
+    .form h2 {
+        font-size: 2em;
+    }
+
+    .formInDiv {
+        min-height: 600px;
+    }
+
+    .btn-minus-time {
+        font-size: 2em;
+        /* top: 5px; */
+    }
+    .btn-minus-detail {
+        position: absolute;
+        bottom: 0px;
+    } 
+}
