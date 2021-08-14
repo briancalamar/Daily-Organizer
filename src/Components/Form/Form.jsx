@@ -106,7 +106,6 @@ function Form({ createTodo }) {
                                 <textarea
                                     className="input-detail"
                                     name="detail"
-                                    // placeholder="Ingrese los detalles aqui"
                                     value={form.detail}
                                     onChange={handleChange} />
                                 {/* <RiArrowGoBackLine
