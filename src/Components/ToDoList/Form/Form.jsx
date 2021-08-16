@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { connect } from 'react-redux'
-import { createTodo } from '../../Actions'
 
 import { IoMdClock, IoMdSend } from 'react-icons/io'
 import { BiMessageDetail } from 'react-icons/bi'
@@ -8,7 +7,7 @@ import { RiArrowGoBackLine } from 'react-icons/ri'
 
 
 import './Form.css'
-// import { AiOutlineStar, AiFillStar } from 'react-icons/ai';
+import { createTodo } from '../../../Actions'
 
 function Form({ createTodo }) {
     const [detail, setDetail] = useState(false);
@@ -21,8 +20,6 @@ function Form({ createTodo }) {
     })
 
     function handleChange(e) {
-        // console.log(e.target.name, e.target.value)
-        console.log(e.target)
         e.preventDefault()
         setForm({
             ...form,
@@ -81,11 +78,6 @@ function Form({ createTodo }) {
                                     className="btn-minus btn-minus-time"
                                     onClick={() => setTime(!time)}
                                 />
-                                {/* <input
-                                    className="btn-minus-time"
-                                    type="button"
-                                    value="-"
-                                    onClick={() => setTime(!time)} /> */}
                             </div>
 
                     }

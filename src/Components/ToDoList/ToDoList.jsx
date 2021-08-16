@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { Route } from "react-router-dom";
-import Form from "../Form/Form";
-import Todos from "../Todos/Todos";
+import Todos from "./Todos/Todos";
 import Container from "./Container/Container";
+import Form from "./Form/Form";
 import NavToDo from "./NavToDo/NavToDo";
 import './ToDoList.css'
 

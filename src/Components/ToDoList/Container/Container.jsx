@@ -1,5 +1,6 @@
-import Form from '../../Form/Form'
-import Todos from '../../Todos/Todos'
+
+import Form from '../Form/Form'
+import Todo from '../Todos/Todos'
 import './Container.css'
 
 export default function Container() {
@@ -7,7 +8,7 @@ export default function Container() {
     return (
         <div className="todo-container">
                 <Form />
-                <Todos/>
+                <Todo/>
         </div>
     )
 }
