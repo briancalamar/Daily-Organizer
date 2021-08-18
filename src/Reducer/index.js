@@ -15,12 +15,20 @@ const initialState = {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case CREATE_TODO: {
-            return {...state ,todos: [...state.todos, action.payload]}
+            let todos = [action.payload, ...state.todos]
+
+            if (action.payload.time !== "") {
+                todos = todos.sort((a, b) =>
+                    a.time.localeCompare(b.time)
+                );
+            }
+
+            return { ...state, todos}
         }
         case DELETE_TODO: {
 
-            let filteredTodos = state.todos.filter( t => t.id !== action.payload)
-            let filteredFavorites = state.favorites.filter( t => t.id !== action.payload)
+            let filteredTodos = state.todos.filter(t => t.id !== action.payload)
+            let filteredFavorites = state.favorites.filter(t => t.id !== action.payload)
 
             return {
                 ...state,
@@ -30,7 +38,7 @@ export default function reducer(state = initialState, action) {
         }
         case EDIT_TODO: {
             let editTodos = state.todos.map(e => e.id === action.payload.id
-                ? {...e, ...action.payload}
+                ? { ...e, ...action.payload }
                 : e
             )
 
@@ -41,7 +49,7 @@ export default function reducer(state = initialState, action) {
         }
         case CHANGE_STATUS: {
             let editTodos = state.todos.map(e => e.id === action.payload
-                ? {...e, status: !e.status}
+                ? { ...e, status: !e.status }
                 : e
             )
 

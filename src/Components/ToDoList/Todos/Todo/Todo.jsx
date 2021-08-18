@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { useState } from 'react'
 import { addFavorites, removeFavorites, deleteTodo } from '../../../../Actions'
 
@@ -19,24 +19,25 @@ export default function Todo({ todo }) {
 
     return (
         <div className="todo">
-            <h4 className="todo-time">{todo.time}</h4>
+            <p className="todo-time">{todo.time}</p>
             <div className="todo-info">
                 <h3>{todo.title}</h3>
                 <p>{todo.detail}</p>
             </div>
             <div className="todo-edits">
-                {/* <div className="t-e-icons"> */}
-                    <AiFillDelete onClick={() => dispatch(deleteTodo(todo.id))} />
+                    <AiFillDelete
+                    className="t-e-i t-e-delete" 
+                    onClick={() => dispatch(deleteTodo(todo.id))} />
                     {
                         favorite === false
-                            ? <AiOutlineStar onClick={handleClick} />
-                            : <AiFillStar onClick={handleClick} />
+                            ? <AiOutlineStar
+                                className="t-e-i t-e-favorite"
+                                onClick={handleClick} />
+                            : <AiFillStar
+                                className="t-e-i t-e-favorite"
+                                onClick={handleClick} />
                     }
-                    <Link to={`/edit/${todo.id}`}> <BiEdit/> </Link>
-                {/* </div> */}
-                {/* <div>
-                    <Link to={`/todo/${todo.id}`}>Details</Link>
-                </div> */}
+                    <BiEdit className="t-e-i t-e-edit"/>
             </div>
         </div>
     )

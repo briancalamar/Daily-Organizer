@@ -16,7 +16,7 @@ function Form({ createTodo }) {
     const [form, setForm] = useState({
         title: "",
         detail: "",
-        time: "No specific time",
+        time: "",
     })
 
     function handleChange(e) {
@@ -33,7 +33,7 @@ function Form({ createTodo }) {
         setForm({
             title: "",
             detail: "",
-            time: "No specific time",
+            time: "",
         })
     }
 
