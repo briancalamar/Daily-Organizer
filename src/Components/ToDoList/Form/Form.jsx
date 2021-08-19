@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import { IoMdClock, IoMdSend } from 'react-icons/io'
 import { BiMessageDetail } from 'react-icons/bi'
@@ -8,11 +8,15 @@ import { RiArrowGoBackLine } from 'react-icons/ri'
 
 import './Form.css'
 import { createTodo } from '../../../Actions'
+import { useHistory } from 'react-router-dom'
 
-function Form({ createTodo }) {
+export default function Form() {
+    const dispatch = useDispatch()
+    let history = useHistory();
+    const [width, setWidth] = useState(window.innerWidth);
     const [detail, setDetail] = useState(false);
     const [time, setTime] = useState(false);
-
+    const [danger, setDanger] = useState(false)
     const [form, setForm] = useState({
         title: "",
         detail: "",
@@ -21,6 +25,7 @@ function Form({ createTodo }) {
 
     function handleChange(e) {
         e.preventDefault()
+        if (e.target.name === "title") setDanger(false)
         setForm({
             ...form,
             [e.target.name]: e.target.value
@@ -29,12 +34,16 @@ function Form({ createTodo }) {
 
     function handleSubmit(e) {
         e.preventDefault()
-        createTodo(form)
-        setForm({
-            title: "",
-            detail: "",
-            time: "",
-        })
+        if (!form.title) setDanger(true)
+        else {
+            dispatch(createTodo(form))
+            setForm({
+                title: "",
+                detail: "",
+                time: "",
+            })
+            if (width < 1000) history.push("/tareas");
+        }
     }
 
     return (
@@ -45,14 +54,19 @@ function Form({ createTodo }) {
                 type="submit"
                 onSubmit={handleSubmit}>
                 <div className="title separator">
-                    <h3> Titulo</h3>
+                    <h3> Titulo* </h3>
                     <input
                         className="input-title"
                         name="title"
                         type="text"
+                        autoComplete="off"
                         placeholder="Ingrese un titulo..."
                         value={form.title}
                         onChange={handleChange} />
+                    {
+                        danger && <p className="danger">Ingrese un titulo</p>
+                    }
+
                 </div>
                 <div className="time separator">
                     <h3>Horario</h3>
@@ -76,7 +90,12 @@ function Form({ createTodo }) {
                                 />
                                 <RiArrowGoBackLine
                                     className="btn-minus btn-minus-time"
-                                    onClick={() => setTime(!time)}
+                                    onClick={() => {
+                                        setTime(!time)
+                                        setForm({
+                                            ...form, time: "",
+                                        })
+                                    }}
                                 />
                             </div>
 
@@ -100,20 +119,9 @@ function Form({ createTodo }) {
                                     name="detail"
                                     value={form.detail}
                                     onChange={handleChange} />
-                                {/* <RiArrowGoBackLine
-                                    className="btn-minus btn-minus-detail"
-                                    onClick={() => setDetail(!detail)}
-                                /> */}
                             </div>
                     }
                 </div>
-                {/* {
-                    form.favorite === false
-                    ? <AiOutlineStar
-                    onClick={() => setForm({ ...form, favorite: !form.favorite })} />
-                    : <AiFillStar
-                    onClick={() => setForm({ ...form, favorite: !form.favorite })} />
-                } */}
                 <button
                     className="submit"
                 >
@@ -123,12 +131,4 @@ function Form({ createTodo }) {
         </div>
     )
 }
-
-function mapDispatchToProps(dispatch) {
-    return {
-        createTodo: (info) => dispatch(createTodo(info)),
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Form)
 

@@ -13,7 +13,6 @@ export default function ToDoList() {
 
     const listenerWidth = () => {
         setWidth(window.innerWidth)
-        console.log(width)
     }
 
     useEffect(() => {
@@ -28,7 +27,7 @@ export default function ToDoList() {
         <div className="todolist">
             {
                 width > 1000 ? 
-                <Route path="/tareas" component={Container}/>
+                <Route path="/tareas" render={() => <Container width={width}/>}/>
                 :
                 <>
                 <Route path="/tareas" component={NavToDo}/>

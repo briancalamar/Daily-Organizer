@@ -24,6 +24,11 @@
     flex-direction: column;
     word-wrap: break-word;
     padding: 0px 10px;
+    font-family: 'NTR', sans-serif;
+}
+.todo-info h3, .todo-info p{
+    margin: 0;
+    padding: 0;
 }
 
 .todo-edits {

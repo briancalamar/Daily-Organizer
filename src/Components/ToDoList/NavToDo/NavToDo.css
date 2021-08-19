@@ -10,9 +10,17 @@
 
 .ntd-link {
     text-decoration: none;
-    transition: 0.7s;
+    border-radius: 5px;
+    min-width: 40%;
+    text-align: center;
+    background-color: rgba(247, 246, 245, 0.392);
+    padding: 5px;
+    font-weight: bold;
+    font-family: 'Aclonica', sans-serif;
+    color: #000000;
+    transition: 0.5s 0.05s;
 }
 
 .locStyle {
-    text-decoration: underline;
+    border-bottom: solid 2px #7c2ae8b3;
 }
