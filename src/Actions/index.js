@@ -4,18 +4,24 @@ import {
     DELETE_TODO, 
     EDIT_TODO, 
     CHANGE_STATUS,
-    REMOVE_FAVORITES
+    REMOVE_FAVORITES,
+    LOAD_LOCAL_STORAGE
 } from './actionNames'
 
-let id = 0;
-
 export function createTodo(payload){
+
+    let localId = window.localStorage.getItem("id")
+
+    if(!localId) localId = 0;
+
+    localId = ++localId;
+    window.localStorage.setItem("id", localId)
     
     return {
         type: CREATE_TODO,
         payload: {
             ...payload,
-            id: ++id,
+            id: localId,
             status: false,
         },
     };
@@ -53,6 +59,13 @@ export function removeFavorites(payload){
     return {
         type: REMOVE_FAVORITES,
         payload,
+    }
+}
+
+export function loadLocalStorage(payload){
+    return {
+        type: LOAD_LOCAL_STORAGE,
+        payload
     }
 }
 
