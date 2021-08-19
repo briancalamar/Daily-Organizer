@@ -13,7 +13,7 @@ import { useHistory } from 'react-router-dom'
 export default function Form() {
     const dispatch = useDispatch()
     let history = useHistory();
-    const [width, setWidth] = useState(window.innerWidth);
+    const [width] = useState(window.innerWidth);
     const [detail, setDetail] = useState(false);
     const [time, setTime] = useState(false);
     const [danger, setDanger] = useState(false)
