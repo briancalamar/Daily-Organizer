@@ -22,7 +22,7 @@ export function createTodo(payload){
         payload: {
             ...payload,
             id: localId,
-            status: false,
+            favorite: false,
         },
     };
 };

@@ -61,9 +61,15 @@ export default function reducer(state = initialState, action) {
         }
         case ADD_FAVORITES: {
 
+            let todos = state.todos.map( t => t.id === action.payload.id 
+                ? {...t, favorite: !t.favorite}
+                : t
+            )
+
             return {
                 ...state,
-                favorites: [...state.favorites, action.payload]
+                todos,
+                // favorites: [...state.favorites, action.payload]
             }
         }
         case REMOVE_FAVORITES: {

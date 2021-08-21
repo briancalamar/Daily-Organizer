@@ -8,12 +8,13 @@ import { BiEdit } from 'react-icons/bi';
 import './Todo.css'
 
 export default function Todo({ todo,  handleClickOpen}) {
-    const [favorite, setFavorite] = useState(false)
+    const [favorite, setFavorite] = useState(todo.favorite)
     const dispatch = useDispatch()
 
     function handleClick() {
-        if (!favorite) dispatch(addFavorites(todo))
-        else dispatch(removeFavorites(todo.id))
+        dispatch(addFavorites(todo))
+        // if (!favorite) dispatch(addFavorites(todo))
+        // else dispatch(removeFavorites(todo.id))
         setFavorite(!favorite)
     }
 
