@@ -30,6 +30,28 @@
     width: 70%;
 }
 
+.buttons-c {
+    border: none;
+    width: 40%;
+    height: 25px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.cancel-c:hover {
+    width: 50%;
+}
+
+.delete-c {
+    background-color: red;
+    color: white;
+}
+
+.delete-c:hover {
+        background: rgb(255, 69, 69);
+        width: 50%;
+}
+
 @media (max-width: 1000px) {
     .todos {
         width: 95vw;

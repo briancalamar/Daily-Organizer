@@ -7,7 +7,7 @@ import { AiOutlineStar, AiFillStar, AiFillDelete } from 'react-icons/ai';
 import { BiEdit } from 'react-icons/bi';
 import './Todo.css'
 
-export default function Todo({ todo }) {
+export default function Todo({ todo,  handleClickOpen}) {
     const [favorite, setFavorite] = useState(false)
     const dispatch = useDispatch()
 
@@ -27,7 +27,7 @@ export default function Todo({ todo }) {
             <div className="todo-edits">
                     <AiFillDelete
                     className="t-e-i t-e-delete" 
-                    onClick={() => dispatch(deleteTodo(todo.id))} />
+                    onClick={() => handleClickOpen(todo.id)} />
                     {
                         favorite === false
                             ? <AiOutlineStar
