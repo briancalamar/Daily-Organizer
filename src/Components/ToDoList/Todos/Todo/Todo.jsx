@@ -52,7 +52,7 @@ export default function Todo({ todo, handleClickOpen }) {
                     ? <input
                         type="time"
                         name="time"
-                        className="input-time"
+                        className="todo-time todo-i-time"
                         value={edit.todo.time}
                         onChange={handleChange}
                     />
@@ -63,7 +63,7 @@ export default function Todo({ todo, handleClickOpen }) {
                 {
                     edit.edit
                         ? <input
-                            className="input-title"
+                            className="todo-i todo-i-title"
                             name="title"
                             type="text"
                             autoComplete="off"
@@ -76,7 +76,7 @@ export default function Todo({ todo, handleClickOpen }) {
                 {
                     edit.edit
                         ? <textarea
-                            className="input-detail"
+                            className="todo-i todo-i-detail"
                             name="detail"
                             value={edit.todo.detail}
                             onChange={handleChange} />

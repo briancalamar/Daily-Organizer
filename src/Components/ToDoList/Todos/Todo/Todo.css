@@ -65,6 +65,29 @@
 .t-e-confirm {
     color: #0066ff;
 }
+.todo-i-time {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 5px #7c2ae8b0;
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+    transition: 0.7s;
+    cursor: pointer;
+}
+.todo-i {
+    border: none;
+    padding: 5px;
+    outline: none;
+    border-radius: 5px;
+}
+.todo-i-title {
+    margin: 5px 0;
+}
+.todo-i-detail {
+    min-height: 100px;
+    max-width: 100%;
+}
 
 
 
@@ -74,7 +97,7 @@
         flex-direction: column;
         justify-content: space-between;
     }
-
+    
     .todo-time {
         width: 10%;
         text-align: center;
@@ -83,6 +106,9 @@
 }
 
 @media (max-width: 400px) {
+    .todo-i-time {
+        font-size: 0.8em;
+    }
     .todo {
         font-size: 0.8em;
     }
