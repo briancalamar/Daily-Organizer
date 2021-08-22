@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <Route  path='/' component={NavBar}/>
-      <Route  path='/tareas' component={ToDoList}/>
+      <Route  path='/' component={ToDoList}/>
     </div>
   );
 }

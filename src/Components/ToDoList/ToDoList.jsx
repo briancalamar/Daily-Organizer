@@ -27,11 +27,11 @@ export default function ToDoList() {
         <div className="todolist">
             {
                 width > 1000 ? 
-                <Route path="/tareas" render={() => <Container width={width}/>}/>
+                <Route path="/" render={() => <Container width={width}/>}/>
                 :
                 <>
-                <Route path="/tareas" component={NavToDo}/>
-                <Route exact path="/tareas" component={Todos}/>
+                <Route path="/" component={NavToDo}/>
+                <Route exact path="/" component={Todos}/>
                 <Route exact path="/tareas/crear" component={Form}/>
                 </>
             }
