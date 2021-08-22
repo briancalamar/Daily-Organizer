@@ -42,7 +42,7 @@ export default function Form() {
                 detail: "",
                 time: "",
             })
-            if (width < 1000) history.push("/tareas");
+            if (width < 1000) history.push("/");
         }
     }
 
