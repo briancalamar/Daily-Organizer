@@ -25,7 +25,7 @@ export default function reducer(state = initialState, action) {
                 );
             }
 
-            return { ...state, todos}
+            return { ...state, todos }
         }
         case DELETE_TODO: {
 
@@ -39,14 +39,17 @@ export default function reducer(state = initialState, action) {
             }
         }
         case EDIT_TODO: {
-            let editTodos = state.todos.map(e => e.id === action.payload.id
-                ? { ...e, ...action.payload }
+            let todos = state.todos.map(e => e.id === action.payload.id
+                ? action.payload
                 : e
             )
+            todos = todos.sort((a, b) =>
+                a.time.localeCompare(b.time)
+            );
 
             return {
                 ...state,
-                todos: editTodos
+                todos,
             }
         }
         case CHANGE_STATUS: {
@@ -61,8 +64,8 @@ export default function reducer(state = initialState, action) {
         }
         case ADD_FAVORITES: {
 
-            let todos = state.todos.map( t => t.id === action.payload.id 
-                ? {...t, favorite: !t.favorite}
+            let todos = state.todos.map(t => t.id === action.payload.id
+                ? { ...t, favorite: !t.favorite }
                 : t
             )
 
