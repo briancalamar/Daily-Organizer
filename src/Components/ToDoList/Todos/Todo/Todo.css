@@ -1,0 +1,122 @@
+.todo {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: solid 2px #ffffff;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px -5px #7c2ae8b3;
+    padding: 5px 10px;
+    position: relative;
+}
+
+.todo-time {
+    width: 15%;
+    text-align: center;
+}
+
+.todo-info {
+    box-sizing: border-box;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    padding: 0px 10px;
+    font-family: 'NTR', sans-serif;
+}
+.todo-info h3, .todo-info p{
+    margin: 0;
+    padding: 0;
+}
+
+.todo-edits {
+    width: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.t-e-i {
+    font-size: 1.5em;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.t-e-i:hover .t-e-i:active {
+    font-size: 1.9em;
+}
+
+.t-e-favorite {
+    color: #ffff00;
+    top: 0px;
+    left: 0px;
+    position: absolute;
+}
+
+.t-e-delete {
+    color: #ff0000;
+}
+
+.t-e-edit {
+    color: #008000;
+}
+.t-e-confirm {
+    color: #0066ff;
+}
+.todo-i-time {
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 5px #7c2ae8b0;
+    background-color: transparent;
+    outline: none;
+    text-align: center;
+    transition: 0.7s;
+    cursor: pointer;
+}
+.todo-i {
+    border: none;
+    padding: 5px;
+    outline: none;
+    border-radius: 5px;
+}
+.todo-i-title {
+    margin: 5px 0;
+}
+.todo-i-detail {
+    min-height: 100px;
+    max-width: 100%;
+}
+
+
+
+@media (max-width: 1000px) {
+    .todo-edits {
+        width: 5%;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .todo-time {
+        width: 10%;
+        text-align: center;
+        margin-right: 15px;
+    }
+}
+
+@media (max-width: 400px) {
+    .todo-i-time {
+        font-size: 0.8em;
+    }
+    .todo {
+        font-size: 0.8em;
+    }
+}
+
+/* .t-e-icons {
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+} */

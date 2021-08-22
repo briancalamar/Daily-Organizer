@@ -4,77 +4,59 @@ import {
     DELETE_TODO,
     EDIT_TODO,
     CHANGE_STATUS,
-    REMOVE_FAVORITES
+    REMOVE_FAVORITES,
+    LOAD_LOCAL_STORAGE
 } from '../Actions/actionNames'
 
 const initialState = {
-    todos: {},
+    todos: null,
     favorites: [],
 }
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case CREATE_TODO: {
-            let time = action.payload.time;
-            let hour = time;
+            let todos;
+            state.todos ? todos = [action.payload, ...state.todos] : todos = [action.payload]
 
-            if (time !== "No specific time") {
-                time = time.split(":")
-                hour = parseInt(time[1]) < 30 ? `${time[0]}00` : `${time[0]}30`
+            if (action.payload.time !== "") {
+                todos = todos.sort((a, b) =>
+                    a.time.localeCompare(b.time)
+                );
             }
 
-            if (!state.todos.hasOwnProperty(hour)) {
-                return { ...state, todos: { ...state.todos, [hour]: [action.payload] } }
-            }
-            else return { ...state, todos: { ...state.todos, [hour]: [...state.todos[hour], action.payload] } }
+            return { ...state, todos }
         }
         case DELETE_TODO: {
-            let time = action.payload.time;
-            let hour = time;
 
-            if (time !== "No specific time") {
-                time = time.split(":")
-                hour = parseInt(time[1]) < 30 ? `${time[0]}00` : `${time[0]}30`
-            }
-
-            let newHour = state.todos[hour].filter(e => e.id !== action.payload.id)
-            let todos;
-            if (newHour.length > 0) {
-                todos = { ...state.todos, [hour]: newHour }
-            } else {
-                delete state.todos[hour]
-                todos = { ...state.todos }
-            }
-
-            let favorites = state.favorites;
-            if (state.favorites.find(e => e.id === action.payload.id)) {
-                favorites = favorites.filter(e => e.id !== action.payload.id)
-            }
+            let filteredTodos = state.todos.filter(t => t.id !== action.payload)
+            let filteredFavorites = state.favorites.filter(t => t.id !== action.payload)
 
             return {
                 ...state,
-                favorites,
-                todos
+                favorites: filteredFavorites,
+                todos: filteredTodos,
             }
         }
         case EDIT_TODO: {
-            let keys = Object.keys(state.todos)
-            let editTodos = keys.map( e => state.todos[e].map(e => e.id === action.payload.id
-                ? e = action.payload
+            let todos = state.todos.map(e => e.id === action.payload.id
+                ? action.payload
                 : e
-            ))
+            )
+            todos = todos.sort((a, b) =>
+                a.time.localeCompare(b.time)
+            );
 
             return {
                 ...state,
-                todos: editTodos
+                todos,
             }
         }
         case CHANGE_STATUS: {
-            let keys = Object.keys(state.todos)
-            let editTodos = keys.map( e => state.todos[e].map(e => e.id === action.payload
-                ? {...e, status: !e.status}
+            let editTodos = state.todos.map(e => e.id === action.payload
+                ? { ...e, status: !e.status }
                 : e
-            ))
+            )
 
             return {
                 ...state, todos: editTodos
@@ -82,9 +64,15 @@ export default function reducer(state = initialState, action) {
         }
         case ADD_FAVORITES: {
 
+            let todos = state.todos.map(t => t.id === action.payload.id
+                ? { ...t, favorite: !t.favorite }
+                : t
+            )
+
             return {
                 ...state,
-                favorites: [...state.favorites, action.payload]
+                todos,
+                // favorites: [...state.favorites, action.payload]
             }
         }
         case REMOVE_FAVORITES: {
@@ -92,6 +80,12 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 favorites: state.favorites.filter(e => e.id !== action.payload)
+            }
+        }
+        case LOAD_LOCAL_STORAGE: {
+            return {
+                ...state,
+                todos: action.payload
             }
         }
         default: return state

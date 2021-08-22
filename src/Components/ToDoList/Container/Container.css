@@ -1,0 +1,12 @@
+.todo-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    min-height: 100%;
+    justify-content: space-around;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
