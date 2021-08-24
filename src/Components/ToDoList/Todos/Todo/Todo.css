@@ -62,33 +62,53 @@
 .t-e-edit {
     color: #008000;
 }
-.t-e-confirm {
-    color: #0066ff;
-}
-.todo-i-time {
-    background-color: transparent;
-    border: none;
-    border-bottom: solid 5px #7c2ae8b0;
-    background-color: transparent;
-    outline: none;
-    text-align: center;
-    transition: 0.7s;
-    cursor: pointer;
-}
-.todo-i {
-    border: none;
-    padding: 5px;
-    outline: none;
-    border-radius: 5px;
-}
-.todo-i-title {
-    margin: 5px 0;
-}
-.todo-i-detail {
-    min-height: 100px;
-    max-width: 100%;
+.form-edit-todo h3 {
+    width: 100%;
 }
 
+.buttons-c {
+    border: none;
+    width: 40%;
+    height: 25px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.t-separator {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'NTR', sans-serif;
+}
+
+.fet-i-title {
+    box-sizing: border-box;
+    border: none;
+    width: 80%;
+    padding: 5px;
+    text-align: center;
+    border-bottom: solid 5px #7c2ae8b0;
+}
+
+.fet-i-detail {
+    box-sizing: border-box;
+    padding: 5px;
+    width: 90%;
+    min-height: 100px;
+    border: solid 2px #7c2ae8b0;
+    border-radius: 10px;
+}
+
+.et-b-confirm {
+    background-color: #008000;
+    color: #ffffff;
+    outline: transparent;
+}
+.et-b-confirm:hover {
+    width: 50%;
+}
 
 
 @media (max-width: 1000px) {

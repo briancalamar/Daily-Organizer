@@ -224,13 +224,13 @@ export default function Todo({ todo, handleClickOpen }) {
                 fullWidth={true}
                 maxWidth="sm"
             >
-                <DialogTitle id="alert-dialog-title">{"Edicion de tarea"}</DialogTitle>
+                <DialogTitle id="alert-dialog-title">{"Edita tu tarea"}</DialogTitle>
                 <DialogContent>
-                    <form className="formInDiv">
-                        <div className="title separator">
+                    <form className="form-edit-todo t-separator">
+                        <div className="fet-title t-separator">
                             <h3> Titulo* </h3>
                             <input
-                                className="input-title"
+                                className="fet-i-title"
                                 name="title"
                                 type="text"
                                 autoComplete="off"
@@ -238,27 +238,23 @@ export default function Todo({ todo, handleClickOpen }) {
                                 value={edit.title}
                                 onChange={handleChange} />
                         </div>
-                        <div className="time separator">
+                        <div className="fet-time t-separator">
                             <h3>Horario</h3>
-                            <div className="task-form-time">
-                                <input
-                                    type="time"
-                                    name="time"
-                                    className="input-time"
-                                    value={edit.time}
-                                    onChange={handleChange}
-                                />
-                            </div>
+                            <input
+                                type="time"
+                                name="time"
+                                className="input-time"
+                                value={edit.time}
+                                onChange={handleChange}
+                            />
                         </div>
-                        <div className="detail separator">
+                        <div className="fet-description t-separator">
                             <h3>Detalles</h3>
-                            <div className="task-form-detail">
-                                <textarea
-                                    className="input-detail"
-                                    name="detail"
-                                    value={edit.detail}
-                                    onChange={handleChange} />
-                            </div>
+                            <textarea
+                                className="fet-i-detail"
+                                name="detail"
+                                value={edit.detail}
+                                onChange={handleChange} />
                         </div>
                     </form>
                 </DialogContent>
@@ -266,7 +262,7 @@ export default function Todo({ todo, handleClickOpen }) {
                     <button onClick={handleCloseEdit} className="buttons-c cancel-c">
                         Cancelar
                     </button>
-                    <button onClick={handleEdit} className="buttons-c delete-c" autoFocus>
+                    <button onClick={handleEdit} className="buttons-c et-b-confirm" autoFocus>
                         Confirmar
                     </button>
                 </DialogActions>
